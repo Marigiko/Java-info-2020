@@ -1,4 +1,5 @@
 import java.time.*;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,8 +65,23 @@ public class Ejercicio5 {
         }*/
 
         Map<String, Integer> map = new HashMap<>();
-        alumnos.stream().forEach(e -> map.put((e.nombre + " " + e.apellido), (2021 - e.fechaDeNacimiento.getYear())));
+        alumnos.stream().forEach(e -> map.put((e.nombre + " " + e.apellido), calcularEdad(e.fechaDeNacimiento)));
 
         System.out.println(map);
+    }
+
+    public static int calcularEdad(LocalDate fecha) {
+
+        Calendar fechaActual = Calendar.getInstance();
+
+        int año = fechaActual.get(Calendar.YEAR) - fecha.getYear();
+        int mes = fechaActual.get(Calendar.MONTH) - fecha.getDayOfMonth();
+        int dia = fechaActual.get(Calendar.DATE) - fecha.getDayOfYear();
+
+        if(mes<0 || (mes==0 && dia<0)){
+           año--;
+       }
+
+       return año;
     }
 }
