@@ -1,2 +1,2 @@
 # Java-info-2020
-Practica de Java
+Esta es una practica de codigos del lenguaje JAVA realizado en el curso INFORMATORIO 2020.
